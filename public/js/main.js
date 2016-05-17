@@ -36,30 +36,30 @@ function makeSelection(e) {
     console.log('e.target:', e.target);
 }
 
-var arr = [
-  {"Question" :"Why is the sky blue?",
-    "Option 1": "because molecules in the air scatter blue light from the sun",
-    "Option 2": "Becasue of Nitrogen in the Air ",
-    "Option 3": "Becasue of collison of air molecule ",
-    "answer": "Option 1"​
+
+var questionArr = [
+  {
+    "question":"Why is the sky blue?",
+    "option1":"Molecules in the air scatter blue light from the sun.",
+    "option2":"The ocean is reflected in the sky.",
+    "option3":"The color of outer space.",
+    "correctAnswer":"option1"
   },
-  {"Question" :"Why is the grass green?",
-    "Option 1": "Becasue of chlorophyll",
-    "Option 2": "They have diffentent cells ",
-    "Option 3": "becasue of photosynthesis",
-    "answer": "Option 1"​
+  {
+    "question": "Why is the grass green?",
+    "option1":"The water in the cells",
+    "option2":"Photosynthesis is taking place",
+    "option3":"They produce a bright pigment called chlorophyll",
+    "correctAnswer":"option3"
   }
-]
+];
 
 function getRandomQuestion(){
-
-  console.log('RANDOM!');
-
-  $.getJSON('./data.json', function(data) {
-    console.log('JSON!');
-    var entry = data[Math.floor(Math.random()*data.length)];
-    //do the same exact thing with entry
-    console.log(entry);
-  })
-
+  console.log('RANDOM QUESTION!');
+  var randomQuestion = questionArr[Math.floor(Math.random()*questionArr.length)];
+  console.log('RANDOM QUESTION OBJ:', randomQuestion);
+  $(".questionTitle").append(randomQuestion.question);
+  $("#option1").append(randomQuestion.option1);
+  $("#option2").append(randomQuestion.option2);
+  $("#option3").append(randomQuestion.option3);
 }
