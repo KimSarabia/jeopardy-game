@@ -1,0 +1,16 @@
+[
+  {
+    "question":"Why is the sky blue?",
+    "option1":"Molecules in the air scatter blue light from the sun.",
+    "option2":"The ocean is reflected in the sky.",
+    "option3":"The color of outer space.",
+    "correctAnswer":"option1"
+  },
+  {
+    "question": "Why is the grass green?",
+    "option1":"The water in the cells",
+    "option2":"Photosynthesis is taking place",
+    "option3":"They produce a bright pigment called chlorophyll",
+    "correctAnswer":"option3"
+  }
+]
