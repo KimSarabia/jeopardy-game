@@ -1,65 +1,41 @@
 'use strict';
 
-var socket, player;
-
 $(() => {
+    function makeSelection(e) {
+        $(e.target).addClass('active');
+        var selection = $(this).data('answer');
+        socket.emit('selection', selection);
+    }
 
-    socket = io();
+    var socket = io();
+    socket.on("warning", message => alert(message));
 
-    socket.on('playerNum', playerNum => {
-        player = playerNum;
-        $('#status').text(`Waiting for opponent`)
+    $('#status').text(`Waiting for opponent`);
+
+    socket.on('nextQuestion', randomQuestion => {
+      console.log('RANDOM QUESTION OBJ:', randomQuestion);
+      $(".questionTitle").text(randomQuestion.question);
+      $("#option1").text(randomQuestion.option1);
+      $("#option2").text(randomQuestion.option2);
+      $("#option3").text(randomQuestion.option3);
     });
 
     socket.on('gameStart', () => {
-
-        getRandomQuestion();
-
-        if (player) {
-            $('#answersButtons').show();
-            $('#status').text(`Pick the right answer!`)
-
-        }
+        $('#answersButtons').show();
+        $('#status').text(`Pick the right answer!`)
     });
+
+    socket.on('gameError', message => {
+        alert(message);
+        location.reload();
+    });
+
+    socket.on('gameEnd', message => {
+        alert(message);
+        location.reload();
+    });
+
 
     $('.answersButton').on('click', makeSelection);
 });
 
-function makeSelection(e) {
-
-    $('.answersButton').off('click');
-    $(e.target).addClass('active');
-
-    var selection = $(e.target).data('rps');
-    socket.emit('selection', selection)
-
-    console.log('e.target:', e.target);
-}
-
-
-var questionArr = [
-  {
-    "question":"Why is the sky blue?",
-    "option1":"Molecules in the air scatter blue light from the sun.",
-    "option2":"The ocean is reflected in the sky.",
-    "option3":"The color of outer space.",
-    "correctAnswer":"option1"
-  },
-  {
-    "question": "Why is the grass green?",
-    "option1":"The water in the cells",
-    "option2":"Photosynthesis is taking place",
-    "option3":"They produce a bright pigment called chlorophyll",
-    "correctAnswer":"option3"
-  }
-];
-
-function getRandomQuestion(){
-  console.log('RANDOM QUESTION!');
-  var randomQuestion = questionArr[Math.floor(Math.random()*questionArr.length)];
-  console.log('RANDOM QUESTION OBJ:', randomQuestion);
-  $(".questionTitle").append(randomQuestion.question);
-  $("#option1").append(randomQuestion.option1);
-  $("#option2").append(randomQuestion.option2);
-  $("#option3").append(randomQuestion.option3);
-}
