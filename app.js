@@ -78,19 +78,12 @@ io.on('connection', function(socket) {
 //     }
 // }
 
-function getRandomQuestion(){
-  console.log('RANDOM QUESTION!');
-  var randomQuestion = questionArr[Math.floor(Math.random()*questionArr.length)];
-  console.log('RANDOM QUESTION OBJ:', randomQuestion);
-  $(".questionTitle").append(randomQuestion.question);
-  $("#option1").append(randomQuestion.option1);
-  $("#option2").append(randomQuestion.option2);
-  $("#option3").append(randomQuestion.option3);
-}
-
-function determineWinner(selections) {
-
-}
+// function determineWinner(selections) {
+//   var options = ['option1', 'option2', 'option3'];
+//   if(selections[0] === selections[1]){
+//
+//   }
+// }
 
 server.listen(PORT, err => {
     console.log(err || `Server listening on port ${PORT}`);
