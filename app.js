@@ -28,6 +28,7 @@ io.on('connection', function(socket) {
     console.log('Client connected');
 
     userCount++;
+    console.log('userCount:', userCount);
 
     if (userCount === 1 || userCount === 2) {
         socket.emit('playerNum', userCount);
@@ -37,13 +38,22 @@ io.on('connection', function(socket) {
         io.emit('gameStart', null);
     }
 
+//take the input
+//determine the winner
+//am I answer 3
+//did you win?
+//if you have answer 1, you won...
+
     socket.on('selection', selection => {
         console.log('selection:', selection);
         selections.push(selection);
 
+        //we've made both selections once selections is two, and then we can figure out the winner
+
         if (selections.length === 2) {
             var winner = determineWinner(selections);
             io.emit('winner', winner);
+            selections = [];
         }
     })
 
@@ -56,13 +66,30 @@ io.on('connection', function(socket) {
     });
 
 });
+//
+// function determineWinner(selections) {
+//     var options = ['option1', 'option2', 'option3'];
+//
+//     if (selections[0] === selections[1]) {
+//         return 'draw';
+//     }
+//     for(var i = 0; i < options.length; i++){
+//       if(selections.indexOf(options[i]) === -1)
+//     }
+// }
+
+function getRandomQuestion(){
+  console.log('RANDOM QUESTION!');
+  var randomQuestion = questionArr[Math.floor(Math.random()*questionArr.length)];
+  console.log('RANDOM QUESTION OBJ:', randomQuestion);
+  $(".questionTitle").append(randomQuestion.question);
+  $("#option1").append(randomQuestion.option1);
+  $("#option2").append(randomQuestion.option2);
+  $("#option3").append(randomQuestion.option3);
+}
 
 function determineWinner(selections) {
-    var options = ['option1', 'option2', 'option3'];
 
-    if (selections[0] === selections[1]) {
-        return 'draw';
-    }
 }
 
 server.listen(PORT, err => {

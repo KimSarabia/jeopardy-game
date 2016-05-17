@@ -53,13 +53,3 @@ var questionArr = [
     "correctAnswer":"option3"
   }
 ];
-
-function getRandomQuestion(){
-  console.log('RANDOM QUESTION!');
-  var randomQuestion = questionArr[Math.floor(Math.random()*questionArr.length)];
-  console.log('RANDOM QUESTION OBJ:', randomQuestion);
-  $(".questionTitle").append(randomQuestion.question);
-  $("#option1").append(randomQuestion.option1);
-  $("#option2").append(randomQuestion.option2);
-  $("#option3").append(randomQuestion.option3);
-}

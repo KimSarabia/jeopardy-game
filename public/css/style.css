@@ -1,3 +1,21 @@
+body {
+  background-image: url("https://ahcommunitydevelopment.files.wordpress.com/2012/09/jeop_wp1_1600.jpg");
+
+}
+
 #answersButtons {
   display: none;
+}
+
+.container {
+  position: relative;
+  height: 30rem;
+}
+
+.jumbotron {
+  background-color: rgba(255, 0, 0, 0.4);/* 40% opaque red */
+  position: absolute;
+  top: 100%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
