@@ -1,0 +1,23 @@
+{
+  "name": "socketsssssssssss",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Kim Sarabia <kimberly.sarabia@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "socket.io-client": "^1.4.6",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.3"
+  }
+}

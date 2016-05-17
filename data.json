@@ -1,0 +1,16 @@
+[
+  {"question" :"Why is the sky blue?",
+    "Option 1": "because molecules in the air scatter blue light from the sun ",
+    "Option 2": "Becasue of Nitrogen in the Air ",
+    "Option 3": "Becasue of collison of air molecule ",
+    "answer": "Option 1"
+​
+  },
+  {"question" :"Why is the grass green?",
+    "Option 1": "Becasue of chlorophyll ",
+    "Option 2": "They have diffentent cells ",
+    "Option 3": "becasue of photosynthesis",
+    "answer": "Option 1"
+​
+  }
+]
